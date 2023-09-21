@@ -3,7 +3,7 @@ import feedbackSlice from "../features/feedbackSlice";
 
 const store = configureStore({
     reducer:{
-        feedback:feedbackSlice
+        cart:feedbackSlice
     }
 })
 export default store;

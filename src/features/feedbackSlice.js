@@ -1,21 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  count: 0,
+  cart: [],
 };
 const feedbackSlice = createSlice({
-  name: "feedback",
+  name: "cart",
   initialState,
   reducers: {
-    increment: (state) => {
-      state.count += 1;
-    },
-    decrement: (state) => {
-      state.count -= 1;
+    addToCart: (state, action) => {
+      state, state.cart.push(action.payload);
     },
   },
-  
 });
-export const { increment, decrement } = feedbackSlice.actions;
+export const { addToCart } = feedbackSlice.actions;
 
 export default feedbackSlice.reducer;

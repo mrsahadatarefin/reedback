@@ -4,7 +4,6 @@ import { PiShieldPlus } from "react-icons/pi";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { TbFileDislike } from "react-icons/tb";
-
 import { AiFillStar } from "react-icons/ai";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -290,7 +289,9 @@ const FeedbackModel = () => {
                     <>
                       <div className="flex ">
                         <span
-                          className={`mx-2 text-md ${evaluations.style}`}
+                          className={`mx-2 text-md  ${
+                            ev.id == evaluations.id ? evaluations.style : null
+                          }`}
                           onClick={() => setEvaluations(ev)}
                         >
                           {ev.icon}
@@ -313,7 +314,6 @@ const FeedbackModel = () => {
                   placeholder="Add your feedback here"
                   name="feedbackNote"
                   className="textarea textarea-bordered textarea-lg w-full  "
-                  required
                 ></textarea>
               </div>
               <h1>

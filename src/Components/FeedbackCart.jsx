@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import { BsPencilFill } from "react-icons/bs";
-import { AiFillStar } from "react-icons/ai";
 import ReactStars from "react-rating-stars-component";
 
 const FeedbackCart = () => {
@@ -12,7 +11,7 @@ const FeedbackCart = () => {
       {carts?.map((cart, i) => (
         <div
           key={i + 1}
-          className="  mx-6 border-gray-300 border-2 rounded-full px-10 mt-5 py-5"
+          className="  mx-6 border-gray-300 border-2 rounded-lg px-10 mt-5 py-5"
         >
           <div className="flex justify-between">
             <div>
@@ -26,7 +25,11 @@ const FeedbackCart = () => {
               <h1 className="pr-4 text-lg font-semibold">
                 {cart.evaluations.name}
               </h1>
-              <h1>
+              <h1
+                onClick={() =>
+                  document.getElementById("my_modal_3").showModal()
+                }
+              >
                 <BsPencilFill size={20} />
               </h1>
             </div>
@@ -76,6 +79,7 @@ const FeedbackCart = () => {
               </div>
             </div>
           </div>
+          <h1 className=" text-lg font-medium">{cart.feedbackNote}</h1>
         </div>
       ))}
     </div>

@@ -6,13 +6,16 @@ import { AiOutlineDislike } from "react-icons/ai";
 import { TbFileDislike } from "react-icons/tb";
 import { AiFillStar } from "react-icons/ai";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../features/feedbackSlice";
-import { v4 as uuidv4 } from "uuid";
-const FeedbackModel = () => {
+import { useDispatch, useSelector } from "react-redux";
+import { updateTOCart } from "../../features/feedbackSlice";
+
+const UpdateModel = ({ updateId }) => {
+  const carts = useSelector((state) => state.cart.cart);
   const [attribute1Rating1, setAttribute1Rating1] = useState(null);
   const [attribute1Rating2, setAttribute1Rating2] = useState(null);
   const [attribute1Rating3, setAttribute1Rating3] = useState(null);
+  const find = carts.find((cart) => cart.id == updateId);
+
   const [evaluations, setEvaluations] = useState({});
   const dispatch = useDispatch();
 
@@ -24,11 +27,19 @@ const FeedbackModel = () => {
     const attribute1 = form.attribute1.value;
     const attribute2 = form.attribute2.value;
     const attribute3 = form.attribute3.value;
+    console.log(
+      name,
+      attribute1,
+      feedbackNote,
+      attribute2,
+      attribute3,
+      evaluations
+    );
 
     form.reset();
     dispatch(
-      addToCart({
-        id: uuidv4(),
+      updateTOCart({
+        id: updateId,
         name,
         feedbackNote,
         attribute1,
@@ -41,7 +52,7 @@ const FeedbackModel = () => {
       })
     );
   };
-  // evaluation data
+
   const evaluation = [
     {
       id: 1,
@@ -68,7 +79,6 @@ const FeedbackModel = () => {
       style: "text-red-400",
     },
   ];
-  // attributes data
   const attributes = [
     {
       name: "Communication Skills",
@@ -95,10 +105,10 @@ const FeedbackModel = () => {
 
   return (
     <>
-      <dialog id="my_modal_3" className="modal">
+      <dialog id="my_modal_4" className="modal modal-close ">
         <div className="modal-box">
           <form method="dialog">
-            <h1 className="text-2xl font-bold">Share Your Feedback</h1>
+            <h1 className="text-2xl font-bold">Share Your Feedback </h1>
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-5  text-orange-500 text-2xl ">
               ✕
             </button>
@@ -113,7 +123,7 @@ const FeedbackModel = () => {
                     name="attribute1"
                   >
                     <option disabled selected>
-                      new Attribute
+                      {find?.attribute1}
                     </option>
                     {attributes.map(({ name, i }) => (
                       <option key={i} value={name}>
@@ -124,7 +134,6 @@ const FeedbackModel = () => {
                 </div>
                 <div className="flex ">
                   <div className="">
-                    {/* rating star */}
                     <div className="flex">
                       {[...Array(5)].map((star, i) => {
                         const ratingValue = i + 1;
@@ -170,7 +179,7 @@ const FeedbackModel = () => {
                     name="attribute2"
                   >
                     <option disabled selected>
-                      new Attribute
+                      {find?.attribute2}
                     </option>
                     {attributes.map(({ name, i }) => (
                       <option key={i} value={name}>
@@ -181,7 +190,6 @@ const FeedbackModel = () => {
                 </div>
                 <div className="flex ">
                   <div className="">
-                    {/* rating star */}
                     <div className="flex">
                       {[...Array(5)].map((star, i) => {
                         const ratingValue = i + 1;
@@ -227,7 +235,7 @@ const FeedbackModel = () => {
                     name="attribute3"
                   >
                     <option disabled selected>
-                      new Attribute
+                      {find?.attribute3}
                     </option>
                     {attributes.map(({ name, i }) => (
                       <option key={i} value={name}>
@@ -238,7 +246,6 @@ const FeedbackModel = () => {
                 </div>
                 <div className="flex ">
                   <div className="">
-                    {/* rating star */}
                     <div className="flex">
                       {[...Array(5)].map((star, i) => {
                         const ratingValue = i + 1;
@@ -277,7 +284,7 @@ const FeedbackModel = () => {
                   </div>
                 </div>
               </div>
-              {/* Evaluation Score */}
+
               <div className="mt-10 ">
                 <h1 className="font-bold text-md">Evaluation Score*</h1>
                 <div className="grid grid-cols-4 gap-3 mt-5">
@@ -301,6 +308,7 @@ const FeedbackModel = () => {
               <div className="mt-10 ">
                 <h1 className="font-bold text-md">Share your feedback*</h1>
                 <input
+                  defaultValue={find?.name}
                   type="text"
                   placeholder="name"
                   className="input input-bordered w-full mb-5 "
@@ -308,6 +316,7 @@ const FeedbackModel = () => {
                 />
                 <textarea
                   placeholder="Add your feedback here"
+                  defaultValue={find?.feedbackNote}
                   name="feedbackNote"
                   className="textarea textarea-bordered textarea-lg w-full  "
                 ></textarea>
@@ -318,15 +327,13 @@ const FeedbackModel = () => {
               </h1>
 
               <div className="flex justify-end mt-5  ">
-                <form method="dialog">
-                  <button className="px-7 py-3 mx-5 hover:border-blue-600 hover:text-blue-600 border-orange-500 border-2 rounded-full text-orange-500 font-semibold text-md  ">
-                    cancel
-                  </button>
-                </form>
+                <button className="px-7 py-3 mx-5 hover:border-blue-600 hover:text-blue-600 border-orange-500 border-2 rounded-full text-orange-500 font-semibold text-md  ">
+                  cancel
+                </button>
 
                 <button
                   type="submit"
-                  className=" px-5 py-3 hover:bg-blue-600 bg-orange-500 rounded-full   text-white font-semibold text-md "
+                  className="modal-close px-5 py-3 hover:bg-blue-600 bg-orange-500 rounded-full   text-white font-semibold text-md "
                 >
                   Submit Feedback
                 </button>
@@ -339,4 +346,4 @@ const FeedbackModel = () => {
   );
 };
 
-export default FeedbackModel;
+export default UpdateModel;

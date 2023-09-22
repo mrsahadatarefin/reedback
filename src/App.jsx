@@ -1,17 +1,18 @@
-import FeedbackCart from "./Components/FeedbackCart"
-import FeedbackModel from "./Components/feedbackModel/feedbackModel"
-import Header from "./Components/header/Header"
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Home from "./Components/Home/Home";
 
 function App() {
- 
-
+  const route = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
+  ]);
   return (
     <>
-     <Header/>
-     <FeedbackModel/>
-     <FeedbackCart/>
+      <RouterProvider router={route}></RouterProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

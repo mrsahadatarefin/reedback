@@ -106,6 +106,7 @@ const FeedbackModel = () => {
           </form>
           <div>
             <form action="" onSubmit={handelFrom}>
+              {/* Attribute option */}
               <div className="flex justify-between">
                 <div>
                   <select
@@ -164,6 +165,7 @@ const FeedbackModel = () => {
                 </div>
               </div>
               <div className="flex justify-between mt-5">
+                {/* Attribute option */}
                 <div>
                   <select
                     className="select select-bordered w-full "
@@ -221,6 +223,7 @@ const FeedbackModel = () => {
                 </div>
               </div>
               <div className="flex justify-between mt-5">
+                {/* Attribute option */}
                 <div>
                   <select
                     className="select select-bordered w-full "
@@ -298,6 +301,7 @@ const FeedbackModel = () => {
                   ))}
                 </div>
               </div>
+              {/* text area */}
               <div className="mt-10 ">
                 <h1 className="font-bold text-md">Share your feedback*</h1>
                 <input

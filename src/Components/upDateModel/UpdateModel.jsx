@@ -44,7 +44,7 @@ const UpdateModel = ({ updateId }) => {
       })
     );
   };
-
+  // evaluation data
   const evaluation = [
     {
       id: 1,
@@ -71,6 +71,7 @@ const UpdateModel = ({ updateId }) => {
       style: "text-red-400",
     },
   ];
+  // attributes data
   const attributes = [
     {
       name: "Communication Skills",
@@ -109,6 +110,7 @@ const UpdateModel = ({ updateId }) => {
           <div>
             <form action="" onSubmit={handelFrom}>
               <div className="flex justify-between">
+                {/* Attribute option */}
                 <div>
                   <select
                     className="select select-bordered w-full "
@@ -126,6 +128,7 @@ const UpdateModel = ({ updateId }) => {
                 </div>
                 <div className="flex ">
                   <div className="">
+                    {/* rating star */}
                     <div className="flex">
                       {[...Array(5)].map((star, i) => {
                         const ratingValue = i + 1;
@@ -165,6 +168,7 @@ const UpdateModel = ({ updateId }) => {
                 </div>
               </div>
               <div className="flex justify-between mt-5">
+                {/* Attribute option */}
                 <div>
                   <select
                     className="select select-bordered w-full "
@@ -182,6 +186,7 @@ const UpdateModel = ({ updateId }) => {
                 </div>
                 <div className="flex ">
                   <div className="">
+                    {/* rating star */}
                     <div className="flex">
                       {[...Array(5)].map((star, i) => {
                         const ratingValue = i + 1;
@@ -221,6 +226,7 @@ const UpdateModel = ({ updateId }) => {
                 </div>
               </div>
               <div className="flex justify-between mt-5">
+                {/* Attribute option */}
                 <div>
                   <select
                     className="select select-bordered w-full "
@@ -237,6 +243,7 @@ const UpdateModel = ({ updateId }) => {
                   </select>
                 </div>
                 <div className="flex ">
+                  {/* rating star */}
                   <div className="">
                     <div className="flex">
                       {[...Array(5)].map((star, i) => {
@@ -276,7 +283,7 @@ const UpdateModel = ({ updateId }) => {
                   </div>
                 </div>
               </div>
-
+              {/* Evaluation Score */}
               <div className="mt-10 ">
                 <h1 className="font-bold text-md">Evaluation Score*</h1>
                 <div className="grid grid-cols-4 gap-3 mt-5">
@@ -297,6 +304,7 @@ const UpdateModel = ({ updateId }) => {
                   ))}
                 </div>
               </div>
+              {/* text area */}
               <div className="mt-10 ">
                 <h1 className="font-bold text-md">Share your feedback*</h1>
                 <input

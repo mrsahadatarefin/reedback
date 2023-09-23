@@ -325,6 +325,7 @@ const FeedbackModel = () => {
                 </form>
 
                 <button
+                  onClick={() => window.my_modal_3.close()}
                   type="submit"
                   className=" px-5 py-3 hover:bg-blue-600 bg-orange-500 rounded-full   text-white font-semibold text-md "
                 >

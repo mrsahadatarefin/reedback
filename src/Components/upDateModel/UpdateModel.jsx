@@ -27,14 +27,6 @@ const UpdateModel = ({ updateId }) => {
     const attribute1 = form.attribute1.value;
     const attribute2 = form.attribute2.value;
     const attribute3 = form.attribute3.value;
-    console.log(
-      name,
-      attribute1,
-      feedbackNote,
-      attribute2,
-      attribute3,
-      evaluations
-    );
 
     form.reset();
     dispatch(
@@ -327,13 +319,16 @@ const UpdateModel = ({ updateId }) => {
               </h1>
 
               <div className="flex justify-end mt-5  ">
-                <button className="px-7 py-3 mx-5 hover:border-blue-600 hover:text-blue-600 border-orange-500 border-2 rounded-full text-orange-500 font-semibold text-md  ">
-                  cancel
-                </button>
+                <form method="dialog">
+                  <button className="px-7 py-3 mx-5 hover:border-blue-600 hover:text-blue-600 border-orange-500 border-2 rounded-full text-orange-500 font-semibold text-md  ">
+                    cancel
+                  </button>
+                </form>
 
                 <button
+                  onClick={() => window.my_modal_4.close()}
                   type="submit"
-                  className="modal-close px-5 py-3 hover:bg-blue-600 bg-orange-500 rounded-full   text-white font-semibold text-md "
+                  className="close px-5 py-3 hover:bg-blue-600 bg-orange-500 rounded-full   text-white font-semibold text-md "
                 >
                   Submit Feedback
                 </button>
